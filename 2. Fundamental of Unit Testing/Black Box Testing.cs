@@ -33,5 +33,14 @@ namespace TestNinjaUnit._2.Fundamental_of_Unit_Testing
 
             Assert.That(result, Is.EqualTo(2));
         }
+        [Test]
+        public void Max_ArgumentAreEqual_ReturnTheSameArgument()
+        {
+            var math = new Math();
+
+            var result = math.Max(1, 1);
+
+            Assert.That(result, Is.EqualTo(1));
+        }
     }
 }
