@@ -15,5 +15,16 @@ namespace TestNinjaUnit._1.Getting_Started
 
             Assert.That(result, Is.True);
         }
+        [Test]
+        public void CanCalledBy_SameUserCancellingTheReservation_ReturnTrue()
+        {
+            var user = new User();
+            var reservation = new Reservation { MadeBy = user };
+
+            var result = reservation.CanBeCancelledBy(user);
+
+
+            Assert.That(result, Is.True);
+        }
     }
 }
