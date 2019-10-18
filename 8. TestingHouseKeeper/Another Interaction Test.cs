@@ -107,5 +107,23 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
                 Times.Never);
 
         }
+        [Test]
+        public void SendStatementEmails_StatementFileNameIsEmptyString_ShouldNotEmailTheStatement()
+        {
+            _statementGenerator.Setup(sg => sg.SaveStatement(_houseKeeper.Oid,
+                _houseKeeper.FullName,
+                (_statementDate))
+                ).Returns("");
+
+            _service.SendStatementEmails(_statementDate);
+
+            _emailSender.Verify(es => es.EmailFile(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>()),
+                Times.Never);
+
+        }
     }
 }
