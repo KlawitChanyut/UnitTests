@@ -28,4 +28,21 @@ namespace TestNinja.Mocking
             return new RedirectResult();
         }
     }
+
+    public class ActionResultX { }
+
+    public class RedirectResultX : ActionResult { }
+
+    public class EmployeeContextX
+    {
+        public DbSet<Employee> Employees { get; set; }
+
+        public void SaveChanges()
+        {
+        }
+    }
+
+    public class EmployeeX
+    {
+    }
 }
