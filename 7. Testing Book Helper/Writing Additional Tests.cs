@@ -97,5 +97,17 @@ namespace TestNinjaUnit._7.Testing_Book_Helper
 
             Assert.That(result, Is.EqualTo(_existingBooking.Reference));
         }
+        [Test]
+        public void BookingStartAndFinishesAfterAnExistingBooking_ReturnEmptyString()
+        {
+            var result = BookingHelper.OverlappingBookingsExist(new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_existingBooking.DepartureDate),
+                DepartureDate = After(_existingBooking.DepartureDate, days: 2)
+            }, _repository.Object);
+
+            Assert.That(result, Is.Empty);
+        }
     }
 }
