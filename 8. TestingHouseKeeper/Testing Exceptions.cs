@@ -142,5 +142,24 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
 
             _messageBox.Verify(mb => mb.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButtons.OK));
         }
+
+        private void VerifyEmailNotSent()
+        {
+            _emailSender.Verify(es => es.EmailFile(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>()),
+                Times.Never);
+        }
+
+        private void VerifyEmailSent()
+        {
+            _emailSender.Verify(es => es.EmailFile(
+                _houseKeeper.Email,
+                _houseKeeper.StatementEmailBody,
+                _statementFileName,
+                It.IsAny<string>()));
+        }
     }
 }
