@@ -117,5 +117,15 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
 
             VerifyEmailNotSent();
         }
+
+        [Test]
+        public void SendStatementEmails_StatementFileNameIsWhitespace_ShouldNotEmailTheStatement()
+        {
+            _statementFileName = " ";
+
+            _service.SendStatementEmails(_statementDate);
+
+            VerifyEmailNotSent();
+        }
     }
 }
