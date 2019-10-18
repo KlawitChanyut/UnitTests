@@ -56,5 +56,21 @@ namespace TestNinjaUnit._4.Exercise
             // Assert
             Assert.That(result, Is.EqualTo("c"));
         }
+
+        [Test]
+        public void Pop_StackWithAFewObjects_RemoveObjectOnTheTop()
+        {
+            // Arrange 
+            var stack = new Stack<string>();
+            stack.Push("a");
+            stack.Push("b");
+            stack.Push("c");
+
+            // Act
+            stack.Pop();
+
+            // Assert
+            Assert.That(stack.Count, Is.EqualTo(2));
+        }
     }
 }
