@@ -23,6 +23,14 @@ namespace TestNinjaUnit._4.Exercise
             stack.Push("a");
 
             Assert.That(stack.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Count_EmptyStack_ReturnZero()
+        {
+            var stack = new Stack<string>();
+
+            Assert.That(stack.Count, Is.EqualTo(0));
         }     
     }
 }
