@@ -49,5 +49,18 @@ namespace TestNinjaUnit._7.Testing_Book_Helper
 
             Assert.That(result, Is.Empty);
         }
+
+        [Test]
+        public void BookingStartBeforeAndFinishesInTheMiddleOfAnExistingBooking_ReturnExistingBookingReference()
+        {
+            var result = BookingHelper.OverlappingBookingsExist(new Booking
+            {
+                Id = 1,
+                ArrivalDate = Before(_existingBooking.ArrivalDate),
+                DepartureDate = After(_existingBooking.ArrivalDate)
+            }, _repository.Object);
+
+            Assert.That(result, Is.EqualTo(_existingBooking.Reference));
+        }
     }
 }
