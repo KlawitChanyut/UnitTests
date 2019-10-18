@@ -89,5 +89,23 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
                 (_statementDate)),
                 Times.Never);
         }
+        [Test]
+        public void SendStatementEmails_WhenCalled_EmailTheStatement()
+        {
+            _statementGenerator.Setup(sg => sg.SaveStatement(_houseKeeper.Oid,
+                _houseKeeper.FullName,
+                (_statementDate))
+                ).Returns(() => null);
+
+            _service.SendStatementEmails(_statementDate);
+
+            _emailSender.Verify(es => es.EmailFile(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>()),
+                Times.Never);
+
+        }
     }
 }
