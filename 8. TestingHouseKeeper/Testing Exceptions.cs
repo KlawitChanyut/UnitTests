@@ -97,5 +97,15 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
 
             VerifyEmailSent();
         }
+
+        [Test]
+        public void SendStatementEmails_StatementFileNameIsNull_ShouldNotEmailTheStatement()
+        {
+            _statementFileName = null;
+
+            _service.SendStatementEmails(_statementDate);
+
+            VerifyEmailNotSent();
+        }
     }
 }
