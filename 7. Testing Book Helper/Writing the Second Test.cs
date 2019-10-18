@@ -33,5 +33,21 @@ namespace TestNinjaUnit._7.Testing_Book_Helper
 
             }.AsQueryable()); ;
         }
+
+        [Test]
+        public void OverlappingBookingsExist_BookingStartAndFinishesBeforeAnExistingBooking_ReturnEmptyString()
+        {
+
+
+            var result = BookingHelper.OverlappingBookingsExist(new Booking
+            {
+                Id = 2,
+                ArrivalDate = Before(_existingBooking.ArrivalDate, days: 2),
+                DepartureDate = Before(_existingBooking.ArrivalDate),
+                Reference = "a",
+            }, _repository.Object);
+
+            Assert.That(result, Is.Empty);
+        }
     }
 }
