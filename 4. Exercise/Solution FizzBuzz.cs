@@ -34,5 +34,12 @@ namespace TestNinjaUnit._4.Exercise
 
             Assert.That(result, Is.EqualTo("Buzz"));
         }
+        [Test]
+        public void GetOutput_InputIsNotDivisibleBy3Or5_ReturnTheSameNumber()
+        {
+            var result = Exercise_Fizz_Buzz.GetOutput(1);
+
+            Assert.That(result, Is.EqualTo("1"));
+        }
     }
 }
