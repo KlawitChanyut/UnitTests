@@ -39,6 +39,22 @@ namespace TestNinjaUnit._4.Exercise
             var stack = new Stack<string>();
 
             Assert.That(() => stack.Pop(), Throws.InvalidOperationException);
-        }       
+        }
+
+        [Test]
+        public void Pop_StackWithAFewObjects_ReturnObjectOnTheTop()
+        {
+            // Arrange 
+            var stack = new Stack<string>();
+            stack.Push("a");
+            stack.Push("b");
+            stack.Push("c");
+
+            // Act
+            var result = stack.Pop();
+
+            // Assert
+            Assert.That(result, Is.EqualTo("c"));
+        }
     }
 }
