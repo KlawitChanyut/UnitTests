@@ -20,5 +20,12 @@ namespace TestNinjaUnit._4.Exercise
 
             Assert.That(result, Is.EqualTo("FizzBuzz"));
         }
+        [Test]
+        public void GetOutput_InputIsDivisibleBy3Only_ReturnFizz()
+        {
+            var result = Exercise_Fizz_Buzz.GetOutput(3);
+
+            Assert.That(result, Is.EqualTo("Fizz"));
+        }
     }
 }
