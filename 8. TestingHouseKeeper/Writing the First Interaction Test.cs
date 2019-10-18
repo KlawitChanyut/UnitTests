@@ -22,6 +22,19 @@ namespace TestNinjaUnit._8.TestingHouseKeeper
                     StatementEmailBody = "c"}
 
             }.AsQueryable());
+
+            var statementGenerator = new Mock<IStatementGenerator>();
+            var emailSender = new Mock<IEmailSender>();
+            var messageBox = new Mock<IXtraMessageBox>();
+
+            var service = new RefacHouseKeeperHelper(unitOfWork.Object
+                , statementGenerator.Object,
+                emailSender.Object,
+                messageBox.Object);
+
+            service.SendStatementEmails(new DateTime(2017, 1, 1));
+
+            statementGenerator.Verify(sg => sg.SaveStatement(1, "b", (new DateTime(2017, 1, 1))));
         }
     }
 }
