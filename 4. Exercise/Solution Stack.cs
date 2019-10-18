@@ -31,6 +31,14 @@ namespace TestNinjaUnit._4.Exercise
             var stack = new Stack<string>();
 
             Assert.That(stack.Count, Is.EqualTo(0));
-        }     
+        }
+
+        [Test]
+        public void Pop_EmptyStack_ThrowInvalidOperationException()
+        {
+            var stack = new Stack<string>();
+
+            Assert.That(() => stack.Pop(), Throws.InvalidOperationException);
+        }       
     }
 }
