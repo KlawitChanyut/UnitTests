@@ -62,5 +62,26 @@ namespace TestNinjaUnit._7.Testing_Book_Helper
 
             Assert.That(result, Is.EqualTo(_existingBooking.Reference));
         }
+
+        private DateTime Before(DateTime dateTime, int days = 1)
+        {
+            return dateTime.AddDays(-days);
+        }
+        private DateTime After(DateTime dateTime)
+        {
+            return dateTime.AddDays(1);
+        }
+
+
+
+        private DateTime ArriveOn(int year, int month, int day)
+        {
+            return new DateTime(year, month, day, 14, 0, 0);
+        }
+
+        private DateTime DepartOn(int year, int month, int day)
+        {
+            return new DateTime(year, month, day, 10, 0, 0);
+        }
     }
 }
